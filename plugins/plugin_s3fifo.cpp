@@ -26,11 +26,6 @@ class S3FifoCache {
     uint64_t m_size_bytes_;
     uint64_t g_size_bytes_;
 
-  public:
-    S3FifoCache(uint64_t cache_size)
-        : cache_size_(cache_size), s_size_bytes_(0), m_size_bytes_(0),
-          g_size_bytes_(0) {}
-
     bool can_fit(uint64_t size) const noexcept {
         return s_size_bytes_ + m_size_bytes_ + size <= cache_size_;
     }
@@ -62,6 +57,11 @@ class S3FifoCache {
             }
         }
     }
+
+  public:
+    S3FifoCache(uint64_t cache_size)
+        : cache_size_(cache_size), s_size_bytes_(0), m_size_bytes_(0),
+          g_size_bytes_(0) {}
 
     void on_hit(obj_id_t id) {
         auto it = meta_.find(id);

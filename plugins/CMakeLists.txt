@@ -5,7 +5,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(GLIB REQUIRED glib-2.0)
 
-set(PLUGINS fifo s3fifo sieve)
+set(PLUGINS fifo s3fifo sieve s3sieve switching)
 
 foreach(plugin IN LISTS PLUGINS)
   add_library(plugin_${plugin} SHARED plugin_${plugin}.cpp)
