@@ -121,7 +121,7 @@ class S3FifoCache {
             meta_.erase(it);
 
             if (t_freq > 0) {
-                push_main(t, t_size, t_freq);
+                push_main(t, t_size, 0);
             } else {
                 push_ghost(t, t_size, 0);
                 return t;
